@@ -262,6 +262,7 @@ python app.py --port 8080
 Mira cómo funciona AutoDocVision:
 
 📺 **[Ver en YouTube]([[https://www.youtube.com/watch?v=TU_URL_AQUI](https://youtu.be/lDsw31TqXrA)](https://youtu.be/lDsw31TqXrA))**
+https://youtu.be/lDsw31TqXrA
 
 *Duración: 2-3 minutos*
 *Incluye: Captura de pantalla real, voz y demostración completa*
