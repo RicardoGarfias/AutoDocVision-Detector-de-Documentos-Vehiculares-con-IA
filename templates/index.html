@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoDocVision - Detector de Documentos Vehiculares</title>
+    <link rel="stylesheet" href="{{ url_for('serve_static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <h1>🚗 AutoDocVision</h1>
+                <p class="subtitle">Detector de Documentos Vehiculares con IA</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/" class="active">Inicio</a></li>
+                <li><a href="/about">Acerca de</a></li>
+                <li><a href="https://github.com/RicardoGarfias" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenedor Principal -->
+    <main class="main-container">
+        
+        <!-- Sección Hero -->
+        <section class="hero">
+            <h2>Detector Inteligente de Documentos</h2>
+            <p>Detecta y clasifica automáticamente documentos vehiculares usando inteligencia artificial</p>
+        </section>
+
+        <!-- Pestañas -->
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab('upload')">📤 Subir Imagen</button>
+                <button class="tab-button" onclick="switchTab('camera')">📷 Usar Cámara</button>
+                <button class="tab-button" onclick="switchTab('history')">📋 Historial</button>
+            </div>
+
+            <!-- Tab 1: Subir Imagen -->
+            <div id="upload" class="tab-content active">
+                <div class="upload-section">
+                    <div class="drag-drop-area" id="dragDropArea">
+                        <div class="upload-icon">📁</div>
+                        <p>Arrastra una imagen aquí o haz clic para seleccionar</p>
+                        <p class="small-text">Formatos soportados: JPG, PNG, BMP, GIF (máx. 16MB)</p>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+                    
+                    <div class="upload-controls">
+                        <label for="confidenceSlider">Umbral de Confianza: <span id="confidenceValue">70%</span></label>
+                        <input type="range" id="confidenceSlider" min="0" max="100" value="70">
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="uploadImage()" id="uploadBtn">Analizar Imagen</button>
+                </div>
+
+                <!-- Vista Previa y Resultado -->
+                <div class="results-container">
+                    <div class="preview-section" id="previewSection" style="display: none;">
+                        <h3>Imagen Seleccionada</h3>
+                        <img id="previewImage" alt="Vista previa">
+                    </div>
+
+                    <div class="result-section" id="resultSection" style="display: none;">
+                        <div class="result-card">
+                            <h3>Resultado de Detección</h3>
+                            <div class="result-content">
+                                <div class="result-item">
+                                    <span class="label">Clase Detectada:</span>
+                                    <span class="value" id="resultClass">-</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="label">Confianza:</span>
+                                    <span class="value" id="resultConfidence">-</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="label">Estado:</span>
+                                    <span class="value" id="resultStatus">-</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="label">Tiempo de Procesamiento:</span>
+                                    <span class="value" id="resultTime">-</span>
+                                </div>
+                            </div>
+                            <div class="confidence-bar">
+                                <div id="confidenceBar" class="confidence-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="error-section" id="errorSection" style="display: none;">
+                        <div class="error-card">
+                            <h3>⚠️ Error</h3>
+                            <p id="errorMessage">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Usar Cámara -->
+            <div id="camera" class="tab-content">
+                <div class="camera-section">
+                    <div class="camera-container">
+                        <video id="cameraVideo" autoplay playsinline></video>
+                        <canvas id="cameraCanvas" style="display: none;"></canvas>
+                        <div id="cameraStatus" class="status-badge">📷 Cámara Lista</div>
+                    </div>
+
+                    <div class="camera-controls">
+                        <button class="btn btn-primary" id="startCameraBtn" onclick="startCamera()">
+                            ▶️ Iniciar Cámara
+                        </button>
+                        <button class="btn btn-danger" id="stopCameraBtn" onclick="stopCamera()" style="display: none;">
+                            ⏹️ Detener
+                        </button>
+                        <button class="btn btn-success" id="captureBtn" onclick="captureFrame()" style="display: none;">
+                            📸 Capturar
+                        </button>
+                    </div>
+
+                    <div id="cameraResultSection" class="camera-result" style="display: none;">
+                        <div class="result-card">
+                            <h3>Última Detección</h3>
+                            <div class="result-content">
+                                <div class="result-item">
+                                    <span class="label">Clase:</span>
+                                    <span class="value" id="cameraResultClass">-</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="label">Confianza:</span>
+                                    <span class="value" id="cameraResultConfidence">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Historial -->
+            <div id="history" class="tab-content">
+                <div class="history-section">
+                    <h3>Historial de Detecciones</h3>
+                    <div id="historyContainer" class="history-list">
+                        <p class="empty-state">📭 No hay detecciones aún</p>
+                    </div>
+                    <button class="btn btn-secondary" onclick="clearHistory()">Limpiar Historial</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 AutoDocVision - Detector de Documentos Vehiculares</p>
+        <p>Desarrollado por Ricardo Garfias</p>
+    </footer>
+
+    <!-- Loader -->
+    <div class="loader" id="loader" style="display: none;">
+        <div class="spinner"></div>
+        <p>Procesando imagen...</p>
+    </div>
+
+    <script src="{{ url_for('serve_static', filename='js/app.js') }}"></script>
+</body>
+</html>

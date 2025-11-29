@@ -1,0 +1,33 @@
+# Dependencias principales
+Flask==2.3.2
+Werkzeug==2.3.7
+
+# Procesamiento de imágenes
+opencv-python==4.8.0.74
+Pillow==10.0.0
+numpy==1.24.3
+
+# Manejo de datos
+pandas==2.0.3
+
+# Variables de entorno
+python-dotenv==1.0.0
+
+# APIs HTTP
+requests==2.31.0
+
+# Utilidades
+tqdm==4.66.1
+
+# Producción (opcional)
+gunicorn==21.2.0
+gevent==23.9.1
+
+# Machine Learning (instalación local)
+# tensorflow==2.13.0  # Para funcionalidades avanzadas de TensorFlow
+# tensorflowjs==4.11.0  # Para conversión de modelos
+
+# Desarrollo (opcional)
+pytest==7.4.0
+black==23.7.0
+flake8==6.0.0

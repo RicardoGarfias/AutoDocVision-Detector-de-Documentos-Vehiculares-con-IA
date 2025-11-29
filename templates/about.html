@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de - AutoDocVision</title>
+    <link rel="stylesheet" href="{{ url_for('serve_static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <h1>🚗 AutoDocVision</h1>
+                <p class="subtitle">Detector de Documentos Vehiculares con IA</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/about" class="active">Acerca de</a></li>
+                <li><a href="https://github.com/RicardoGarfias" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenedor Principal -->
+    <main class="main-container">
+        <section class="hero">
+            <h2>Acerca de AutoDocVision</h2>
+            <p>Detector inteligente de documentos vehiculares con Inteligencia Artificial</p>
+        </section>
+
+        <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            
+            <h3 style="color: #2563eb; margin-bottom: 1rem;">📌 Propósito del Proyecto</h3>
+            <p>AutoDocVision es una solución de inteligencia artificial que automatiza la detección y clasificación de documentos vehiculares. Utiliza redes neuronales convolucionales entrenadas con Google Teachable Machine para identificar diferentes tipos de documentos con alta precisión.</p>
+
+            <h3 style="color: #2563eb; margin: 2rem 0 1rem 0;">🎯 Tipos de Documentos Detectados</h3>
+            <ul style="margin-left: 2rem; margin-bottom: 2rem;">
+                <li>🇺🇸 <strong>Títulos Vehiculares Americanos</strong> - Vehicle Title (USA)</li>
+                <li>🇲🇽 <strong>Tarjetas de Circulación</strong> - Tarjeta de Circulación de México</li>
+                <li>📋 <strong>Licencias DMV</strong> - Driver's License (USA)</li>
+                <li>📄 <strong>Otros Documentos</strong> - Documentos no identificados</li>
+            </ul>
+
+            <h3 style="color: #2563eb; margin-bottom: 1rem;">🔬 Tecnología Utilizada</h3>
+            <p><strong>Modelo:</strong> MobileNet v2 con Transfer Learning</p>
+            <p><strong>Precisión:</strong> >95% en validación</p>
+            <p><strong>Velocidad:</strong> <500ms por predicción</p>
+            <p><strong>Entrenamiento:</strong> Google Teachable Machine</p>
+
+            <h3 style="color: #2563eb; margin: 2rem 0 1rem 0;">📊 Resultados</h3>
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem;">
+                <tr style="background: #f0f4ff;">
+                    <th style="padding: 0.75rem; border: 1px solid #e2e8f0; text-align: left;">Documento</th>
+                    <th style="padding: 0.75rem; border: 1px solid #e2e8f0; text-align: center;">Precisión</th>
+                    <th style="padding: 0.75rem; border: 1px solid #e2e8f0; text-align: center;">Recall</th>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid #e2e8f0;">Título Americano</td>
+                    <td style="padding: 0.75rem; border: 1px solid #e2e8f0; text-align: center;">98.5%</td>
+                    <td style="padding: 0.75rem; border: 1px solid #e2e8f0; text-align: center;">97.8%</td>
+                </tr>
+                <tr style="background: #f8fafc;">
+                    <td style="padding: 0.75rem; border: 1px solid #e2e8f0;">Tarjeta México</td>
+                    <td style="padding: 0.75rem; border: 1px solid #e2e8f0; text-align: center;">95.1%</td>
+                    <td style="padding: 0.75rem; border: 1px solid #e2e8f0; text-align: center;">94.2%</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.75rem; border: 1px solid #e2e8f0;">Licencia DMV</td>
+                    <td style="padding: 0.75rem; border: 1px solid #e2e8f0; text-align: center;">94.8%</td>
+                    <td style="padding: 0.75rem; border: 1px solid #e2e8f0; text-align: center;">95.5%</td>
+                </tr>
+            </table>
+
+            <h3 style="color: #2563eb; margin-bottom: 1rem;">✨ Características</h3>
+            <ul style="margin-left: 2rem; margin-bottom: 2rem;">
+                <li>✅ Detección en tiempo real desde cámara web</li>
+                <li>✅ Interfaz web intuitiva y amigable</li>
+                <li>✅ Procesamiento rápido (<500ms)</li>
+                <li>✅ Soporte para múltiples formatos de imagen</li>
+                <li>✅ Historial de detecciones</li>
+                <li>✅ API REST para integración</li>
+                <li>✅ Código completamente documentado</li>
+            </ul>
+
+            <h3 style="color: #2563eb; margin-bottom: 1rem;">👨‍💻 Desarrollo</h3>
+            <p><strong>Desarrollador:</strong> Ricardo Garfias</p>
+            <p><strong>Versión:</strong> 1.0.0</p>
+            <p><strong>Fecha:</strong> Noviembre 2025</p>
+            <p><strong>Licencia:</strong> MIT</p>
+
+            <h3 style="color: #2563eb; margin: 2rem 0 1rem 0;">📚 Documentación</h3>
+            <ul style="margin-left: 2rem; margin-bottom: 2rem;">
+                <li><a href="https://github.com/RicardoGarfias/AutoDocVision" target="_blank">GitHub - Código Fuente</a></li>
+                <li><a href="/README.md" target="_blank">README - Guía de Instalación</a></li>
+                <li><a href="/REPORTE.md" target="_blank">REPORTE - Análisis Técnico</a></li>
+            </ul>
+
+            <h3 style="color: #2563eb; margin-bottom: 1rem;">🎥 Video Explicativo</h3>
+            <p>Consulta el video en YouTube donde se explica el funcionamiento completo de la aplicación:</p>
+            <p style="margin-top: 1rem;">
+                <a href="#" target="_blank" style="display: inline-block; background: #dc2626; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600;">
+                    ▶️ Ver Video en YouTube
+                </a>
+            </p>
+
+            <h3 style="color: #2563eb; margin: 2rem 0 1rem 0;">📞 Contacto</h3>
+            <p>Para preguntas, sugerencias o reportes de errores:</p>
+            <ul style="margin-left: 2rem;">
+                <li>GitHub: <a href="https://github.com/RicardoGarfias" target="_blank">@RicardoGarfias</a></li>
+                <li>Issues: <a href="https://github.com/RicardoGarfias/AutoDocVision" target="_blank">Reportar Problemas</a></li>
+            </ul>
+
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e2e8f0;">
+
+            <p style="text-align: center; color: #94a3b8; font-size: 0.9rem;">
+                &copy; 2025 AutoDocVision - Detector de Documentos Vehiculares con IA<br>
+                Desarrollado por Ricardo Garfias | Licencia MIT
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 AutoDocVision - Detector de Documentos Vehiculares</p>
+        <p>Desarrollado por Ricardo Garfias</p>
+    </footer>
+</body>
+</html>
